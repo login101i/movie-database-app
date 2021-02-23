@@ -5,7 +5,7 @@ import "./banner.css"
 
 function Banner() {
     const [movie, setMovie] = useState([]);
-    console.log("To jest film z bannera -------", movie)
+    // console.log("To jest film z bannera -------", movie)
 
     useEffect(() => {
 
@@ -14,7 +14,7 @@ function Banner() {
             const request = await axios.get(requests.fetchTrending);
             const movies = request.data.results
             const movie = movies[Math.floor(Math.random() * request.data.results.length - 1)]
-            console.log(movie)
+            // console.log(movie)
             setMovie(movie);
 
             // Math.floor(Math.random() * request.data.results.length -1)

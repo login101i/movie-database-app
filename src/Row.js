@@ -6,7 +6,7 @@ import Loader from './Loader'
 
 const Row = ({ title, fetchUrl, history, large}) => {
     const [movies, setMovies] = useState([])
-    console.log(movies)
+    // console.log(movies)
 
     const base_url = "https://image.tmdb.org/t/p/original"
 
@@ -26,6 +26,11 @@ const Row = ({ title, fetchUrl, history, large}) => {
     }, [fetchUrl])
 
 
+    const goToDetails = (id) => {
+        history.push(`/moviedetail/${id}`);
+        console.log("ID klikniętego filmu", id)
+    }
+
 
     return (
         <Fragment>
@@ -35,17 +40,19 @@ const Row = ({ title, fetchUrl, history, large}) => {
                         <h3> {title}</h3>
                         <div className="row_posters" >
                             {movies && movies.map(movie => (
-                                <>
-    
+                              
+                         
                                     <img
                                         key={movie.id}
                                         src={`${base_url}${movie.backdrop_path}`}
                                         id={movie.id}
                                         alt="Movie "
                                         className={`row_poster ${large && "row_posterLarge"}`}
-                                       />
+                                        onClick={() => goToDetails(movie.id)} />
 
-                                </>
+                                
+
+                            
                             )
                             )}
                         </div>

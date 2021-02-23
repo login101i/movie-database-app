@@ -33,7 +33,7 @@ const Nav = () => {
                 <img
                     className="nav_logoLeft"
                     src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
-                    alt="Netflix Logo"
+                    alt=" Movie DataBase Logo"
                 />
             </Link>
             <form className="nav_form" onSubmit={handleSearch} >
@@ -61,7 +61,7 @@ const Nav = () => {
                 <img
                     className="nav_logoRight"
                     src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
-                    alt="Netflix Logo"
+                    alt=" Movie DataBase Logo"
                 />
             </Link>
 
