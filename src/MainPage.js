@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment, useContext, useEffect } from 'react'
 import Row from './Row'
 import requests from './requests'
 import Banner from './Banner'
@@ -8,11 +8,16 @@ import FilteredMovies from './FilteredMovies'
 
 
 const MainPage = ({ history }) => {
-    const { showRandom } = useContext(MovieContext);
+    const { showRandom, setShowRandom } = useContext(MovieContext);
+
+    useEffect(() => {
+        setShowRandom("RandomMovies")
+        console.log(showRandom)
+    }, [])
 
     return (
         <Fragment>
-            <Navbar />
+            <Navbar history={history} />
             <Banner />
             <div>
                 {showRandom === "RandomMovies" && (
@@ -22,6 +27,13 @@ const MainPage = ({ history }) => {
                             large history={history} />
                         <Row title="Top Rated movies"
                             fetchUrl={requests.fetchTopRated} history={history} />
+                        <Row title="Trending" fetchUrl={requests.fetchTrending} />
+
+                        <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} history={history} />
+                        <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} history={history}/>
+                        <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} history={history}/>
+                        <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} history={history}/>
+                        <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} history={history}/>
                     </>
                 )}
                 {

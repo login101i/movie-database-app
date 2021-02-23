@@ -1,6 +1,6 @@
 .movies{
   /* border:2px solid white; */
-  
+  min-height: 40vh;
 }
 
 .poster {

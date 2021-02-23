@@ -1,10 +1,11 @@
-import React, {useState, Fragment, useEffect} from 'react'
+import React, { useState, Fragment, useEffect } from 'react'
 import axios from './axios'
 import './row.css'
 import Loader from './Loader'
 
 
-const Row = ({ title, fetchUrl, history, large}) => {
+
+const Row = ({ title, fetchUrl, history, large }) => {
     const [movies, setMovies] = useState([])
     // console.log(movies)
 
@@ -40,8 +41,8 @@ const Row = ({ title, fetchUrl, history, large}) => {
                         <h3 className="ml-4 h2"> {title}</h3>
                         <div className="row_posters" >
                             {movies && movies.map(movie => (
-                              
-                         
+                                
+                                 
                                     <img
                                         key={movie.id}
                                         src={`${base_url}${movie.backdrop_path}`}
@@ -49,10 +50,10 @@ const Row = ({ title, fetchUrl, history, large}) => {
                                         alt="Movie "
                                         className={`row_poster ${large && "row_posterLarge"}`}
                                         onClick={() => goToDetails(movie.id)} />
-
-                                
-
                             
+
+
+
                             )
                             )}
                         </div>

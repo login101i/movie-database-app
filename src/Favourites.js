@@ -25,6 +25,7 @@ const Favourites = () => {
     useEffect(() => {
         if (localStorage.getItem("FAVOURITES"))
             setFavourites(JSON.parse(localStorage.getItem("FAVOURITES")))
+        console.log("---------------------", favourites)
     }, [favourites.length])
 
     const base_url = "https://image.tmdb.org/t/p/original"
@@ -42,27 +43,21 @@ const Favourites = () => {
                     />
                 </Link>
 
-
-                <Link to='/favourites'>
-                    <div
-                        className="nav_logoRight"
-                    >My Favourites Movies</div>
-                </Link>
-
             </div >
             <div className="myFavourites">
                 {favourites.length === 0 ?
-                    (<div className="row">You have no favourites movies yet. </div>)
+                    <div className="row">You have no favourites movies yet. </div>
                     :
                     (
-                        <div className="row">
-                            <h3> My Favourites </h3>
-
-                            <div className="row_posters" >
+                        <>
+                            <div className="row d-flex justify-content-center ">
+                                <h2 className="mt-4"> My Favourites Movies </h2>
+                            </div>
+                            <div className="row_posters d-flex mt-5 pt-3" >
                                 {favourites.map(movie => (
                                     <>
                                         <img
-                                            src={`${base_url}${movie.poster_path}`}
+                                            src={`${base_url}${movie.movieInfo.poster_path}`}
                                             id={movie.id}
                                             alt="Movie "
                                             className="row_poster"
@@ -71,7 +66,8 @@ const Favourites = () => {
                                 )
                                 )}
                             </div>
-                        </div>
+
+                        </>
                     )
                 }
             </div>

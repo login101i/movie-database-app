@@ -4,11 +4,11 @@ import './navbar.css'
 import {MovieContext} from './MovieContext'
 
 
-const Nav = () => {
+const Nav = ({history}) => {
     const [show, setShow] = useState()
     // const [search, setSearch] = useState()
 
-    const { search, setSearch, handleSearch } = useContext(MovieContext)
+    const { search, setSearch, handleSearch, setShowRandom  } = useContext(MovieContext)
 
 
     console.log("To jest wynik wyszukiwania:-------", search)
@@ -26,6 +26,10 @@ const Nav = () => {
         // }
     }, []);
 
+    const goToHomePage =()=>{
+        setShowRandom("RandomMovies")
+        history.push('/')
+    }
 
     return (
         <div className={`nav ${show && "nav_black"}`}>
@@ -35,6 +39,7 @@ const Nav = () => {
                     className="nav_logoLeft"
                     src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
                     alt=" Movie DataBase Logo"
+                    onClick={goToHomePage}
                 />
             </Link>
             <form className="nav_form" onSubmit={handleSearch} >
