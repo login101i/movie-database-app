@@ -37,3 +37,8 @@
   transition: 0.5s;
   
 }
+
+
+.filter_input{
+    max-width:300px;
+}

@@ -48,7 +48,7 @@ const Nav = ({history}) => {
                     <>
                         <input
                             type="text"
-                            placeholder="Search movies here"
+                            placeholder="  Search a movie by title"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                             style={{ minWidth: '300px' }}
