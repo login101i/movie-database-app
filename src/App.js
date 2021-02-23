@@ -5,23 +5,26 @@ import MovieDetails from './MovieDetails'
 import Favourites from './Favourites'
 import Footer from './Footer'
 import DefaultPage from './DefaultPage'
+import { MovieState } from './MovieContext'
+
 
 
 function App() {
   return (
     <div className="App">
+      <MovieState>
+        <Switch>
 
-      <Switch>
-
-        <Route path='/' component={MainPage} exact />
-        <Route path='/moviedetail/:id' component={MovieDetails} />
-        <Route path='/favourites' component={Favourites} exact />
-        <Route  component={DefaultPage} />
+          <Route path='/' component={MainPage} exact />
+          <Route path='/moviedetail/:id' component={MovieDetails} />
+          <Route path='/favourites' component={Favourites} exact />
+          <Route component={DefaultPage} />
 
 
-      </Switch>
+        </Switch>
+      </MovieState>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 }

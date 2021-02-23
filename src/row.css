@@ -1,5 +1,5 @@
 .row {
-  color: rgb(221, 217, 217);
+  color: white;
   margin-left: 20px;
 }
 
@@ -22,7 +22,7 @@
     margin:8px;
 }
 .row_poster:hover {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 .row_posterLarge {
   height: 400px;
@@ -30,5 +30,5 @@
   margin:10px;
 }
 .row_posterLarge:hover {
-  transform: scale(1.06);
+  transform: scale(1.04);
 }

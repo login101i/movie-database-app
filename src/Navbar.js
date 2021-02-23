@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import './navbar.css'
+import {MovieContext} from './MovieContext'
 
 
 const Nav = () => {
     const [show, setShow] = useState()
-    const [search, setSearch] = useState()
+    // const [search, setSearch] = useState()
+
+    const { search, setSearch, handleSearch } = useContext(MovieContext)
+
 
     console.log("To jest wynik wyszukiwania:-------", search)
 
@@ -22,9 +26,6 @@ const Nav = () => {
         // }
     }, []);
 
-    const handleSearch = () => {
-        console.log("szukam")
-    }
 
     return (
         <div className={`nav ${show && "nav_black"}`}>

@@ -37,7 +37,7 @@ const Row = ({ title, fetchUrl, history, large}) => {
             {movies.length === 0 ? <Loader /> :
                 <Fragment >
                     <div className="row">
-                        <h3> {title}</h3>
+                        <h3 className="ml-4 h2"> {title}</h3>
                         <div className="row_posters" >
                             {movies && movies.map(movie => (
                               
