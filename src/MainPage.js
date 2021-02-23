@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Row from './Row'
 import requests from './requests'
+import Banner from './Banner'
 
 const MainPage = () => {
     return (
-        <div>
-            This is Main Page
+        <Fragment>
+            <Banner />
+            <div>
             <Row title="Trending movies" fetchUrl={requests.fetchTrending}
-            large
-            />
-            <Row title="Top Rated movies" fetchUrl={requests.fetchTopRated} />
+                    large
+                />
+                <Row title="Top Rated movies" fetchUrl={requests.fetchTopRated} />
 
-        </div>
+            </div>
+        </Fragment>
+
     )
 }
 
