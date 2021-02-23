@@ -5,22 +5,25 @@ import axios from './axios'
 import YouTube from 'react-youtube';
 import movieTrailer from 'movie-trailer';
 import StarsRating from 'stars-rating'
+import _ from "lodash";
 
 
 
 const MovieDetails = ({ match, history }) => {
     const [movieInfo, setMovieInfo] = useState([])
     const [trailerUrl, setTrailerUrl] = useState("");
-    // console.log("URL --------", trailerUrl)
+    const [idFavourite, setIdFavourite] = useState(false)
+    const [favourites, setFavourites] = useState([])
+    const [movieInBase, setMovieInBase] = useState(false)
 
 
-    console.log("movie Info ---------", movieInfo)
+    // console.log("movie Info ---------", movieInfo)
     // console.log(movieInfo.title)
 
     const base_url = "https://api.themoviedb.org/3/movie/"
     const id = match.params.id
-    console.log("movie id------", id)
-
+    const alreadyFavourite = favourites?.find(movie => movie.id === id)
+    if (alreadyFavourite) setMovieInBase(alreadyFavourite)
 
     const API_KEY = "1329705d96ffd5e3a197e84f0b8875e6"
 
@@ -51,7 +54,23 @@ const MovieDetails = ({ match, history }) => {
 
         }
         request()
-    }, [])
+    }, [id])
+
+    useEffect(() => {
+        let favourites = []
+
+
+        if (localStorage.getItem("FAVOURITES")) {
+            favourites = JSON.parse(localStorage.getItem("FAVOURITES"));
+            let unique = _.uniqWith(favourites, _.isEqual)
+            setFavourites(unique)
+
+
+
+
+        }
+
+    }, [idFavourite, id])
 
     const opts = {
         height: "500",
@@ -60,7 +79,6 @@ const MovieDetails = ({ match, history }) => {
             autoplay: 0,
         }
     }
-
 
     const handleClick = (movie) => {
         //stuff from net
@@ -75,18 +93,51 @@ const MovieDetails = ({ match, history }) => {
         }
     }
 
-    const removeFromFavourites = () => {
+    const addToFavourites = (id) => {
+        let favourites = []
+
+
+        if (localStorage.getItem("FAVOURITES")) {
+            favourites = JSON.parse(localStorage.getItem("FAVOURITES"));
+        }
+        const alreadyFavourite = favourites.find(movie => movie.id === id)
+        if (alreadyFavourite) return
+        favourites.push({
+            movieInfo
+        })
+        console.log(alreadyFavourite)
+        // remove duplicates
+        let unique = _.uniqWith(favourites, _.isEqual)
+        localStorage.setItem("FAVOURITES", JSON.stringify(unique));
+        setIdFavourite(id)
 
     }
-    const addToFavourites = () => {
+
+    const removeFromFavourites = (id) => {
+        let favourites = []
+
+
+        if (localStorage.getItem("FAVOURITES")) {
+            favourites = JSON.parse(localStorage.getItem("FAVOURITES"));
+        }
+        const newFafourites = favourites.filter(movie => movie.id === id)
+        console.log(newFafourites)
+        // remove duplicates
+        localStorage.setItem("FAVOURITES", JSON.stringify(newFafourites));
+        setIdFavourite(false)
 
     }
 
-    const alreadyFavourite = false
     return (
         <Fragment>
             <div>
-
+                <Link to='/'>
+                    <img
+                        className={`nav_logoLeft ${trailerUrl && " hide"}`}
+                        src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
+                        alt=" Movie DataBase Logo"
+                    />
+                </Link>
 
             </div>
             <div className="container-flex" >
@@ -127,7 +178,7 @@ const MovieDetails = ({ match, history }) => {
 
                             <div className="d-flex float-right">
 
-                                {alreadyFavourite ? <button className="btn btn-danger  btn-lg"
+                                {idFavourite && idFavourite === id ? <button className="btn btn-danger  btn-lg"
                                     onClick={() => removeFromFavourites(id)}
                                 >Remove from favourites</button> :
                                     <button className="btn btn-info  btn-lg"
@@ -148,13 +199,15 @@ const MovieDetails = ({ match, history }) => {
                             <div className=""> {movieInfo.overview}</div>
                             <div>Czas trwania: {movieInfo.runtime} min</div>
                         </div>
-                        <div className="d-flex justify-content-between my-3 "
-                            style={{ maxWidth: "300px" }}
-                        >
+                        <div
+                            className="d-flex justify-content-between my-3 "
+                            style={{ maxWidth: "300px" }}>
                             <div>Gatunek</div>
                             <div className="d-flex">
                                 {movieInfo.genres?.map((genre) => (
-                                    <div style={{ marginRight: '10px' }}>{genre.name}</div>
+                                    <div
+                                        key={Math.random()}
+                                        style={{ marginRight: '10px' }}>{genre.name}</div>
                                 ))}
                             </div>
 
@@ -168,21 +221,17 @@ const MovieDetails = ({ match, history }) => {
                             {movieInfo.production_countries && <div>{movieInfo.production_countries[0].name}</div>}
                         </div>
                         <div className="d-flex justify-content-between my-3"
-                            style={{ maxWidth: "300px" }}
+                            style={{ maxWidth: "300px" }}>
 
-                        >
                             {movieInfo.release_date && (
                                 <>
                                     <div>Premiera</div>
                                     <div>{movieInfo.release_date}</div>
                                 </>
                             )}
+
                         </div>
 
-                        {/* <div
-                            onClick={() => handleClick(movieInfo.title)}
-
-                        >Play trailer</div> */}
                         <div className="float-right mt-5">
 
                             <Link to="/">

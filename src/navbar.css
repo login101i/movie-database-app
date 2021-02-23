@@ -34,6 +34,12 @@
 .nav_logoRight {
   position: fixed;
   right: 80px;
-  width: 70px;
+  width:300px;
   object-fit: contain;
+  color:rgba(255, 255, 255, 0.801);
+  font-size: 2rem;
+  transition:all ease-in-out 0.3s;
+}
+.nav_logoRight:hover{
+  color: white;
 }

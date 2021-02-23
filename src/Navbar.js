@@ -17,12 +17,12 @@ const Nav = () => {
             } else setShow(false);
             console.log("przesuwam........")
         });
-        return () => {
-            window.removeEventListener("scroll")
-        }
+        // return () => {
+        //     window.removeEventListener("scroll")
+        // }
     }, []);
 
-    const handleSearch=()=>{
+    const handleSearch = () => {
         console.log("szukam")
     }
 
@@ -45,7 +45,7 @@ const Nav = () => {
                             placeholder="Search movies here"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            style={{ minWidth:'300px'}}
+                            style={{ minWidth: '300px' }}
                         />
                         <div className="input-group-append" style={{ background: 'white', borderRadius: '3px' }}>
                             <button id="search_btn" className="btn">
@@ -58,11 +58,9 @@ const Nav = () => {
 
             </form>
             <Link to='/favourites'>
-                <img
+                <div
                     className="nav_logoRight"
-                    src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
-                    alt=" Movie DataBase Logo"
-                />
+                >My Favourites Movies</div>
             </Link>
 
         </div >

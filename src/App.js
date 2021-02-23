@@ -1,6 +1,5 @@
 import './App.css';
 import { Switch, Route } from 'react-router-dom'
-import Navbar from './Navbar'
 import MainPage from './MainPage'
 import MovieDetails from './MovieDetails'
 import Favourites from './Favourites'
@@ -11,7 +10,6 @@ import DefaultPage from './DefaultPage'
 function App() {
   return (
     <div className="App">
-      <Navbar />
 
       <Switch>
 

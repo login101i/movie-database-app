@@ -16,3 +16,13 @@ cursor: pointer;
 .imageOrTrailer{
   position:relative
 }
+
+.nav_logoLeft {
+  position: fixed;
+  top:30px;
+  left: 80px;
+  width: 80px;
+  object-fit: contain;
+  z-index: 111;
+}
+

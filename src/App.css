@@ -21,6 +21,7 @@ font-family: 'Akaya Telivigala', cursive;
   height: 80px;
   padding-left: 0;
 }
+
 .loader:after {
   content: ' ';
   display: block;
@@ -32,6 +33,8 @@ font-family: 'Akaya Telivigala', cursive;
   border-color: #0d1b9eb6 transparent;
   animation: lds-dual-ring 1.2s ease-in infinite;
 }
+
+
 @keyframes lds-dual-ring {
   0% {
     transform: rotate(0deg);
