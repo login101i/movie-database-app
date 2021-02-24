@@ -24,16 +24,26 @@ const MainPage = ({ history }) => {
                     <>
                         <Row title="Trending movies"
                             fetchUrl={requests.fetchTrending}
-                            large history={history} />
+                            large
+                            history={history} />
                         <Row title="Top Rated movies"
-                            fetchUrl={requests.fetchTopRated} history={history} />
-                        <Row title="Trending" fetchUrl={requests.fetchTrending} />
+                            fetchUrl={requests.fetchTopRated}
+                            history={history} />
+                        <Row title="Action Movies"
+                            fetchUrl={requests.fetchActionMovies}
+                            history={history} />
+                        <Row title="Comedy Movies"
+                            fetchUrl={requests.fetchComedyMovies}
+                            history={history} />
+                        <Row
+                            title="Horror Movies"
+                            fetchUrl={requests.fetchHorrorMovies}
+                            history={history} />
+                        <Row
+                            title="Romance Movies"
+                            fetchUrl={requests.fetchRomanceMovies}
+                            history={history} />
 
-                        <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} history={history} />
-                        <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} history={history}/>
-                        <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} history={history}/>
-                        <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} history={history}/>
-                        <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} history={history}/>
                     </>
                 )}
                 {

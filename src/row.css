@@ -25,10 +25,19 @@
   transform: scale(1.03);
 }
 .row_posterLarge {
-  height: 400px;
+  height: 400px !important;
   transition:0.4;
   margin:10px;
 }
 .row_posterLarge:hover {
   transform: scale(1.04);
 }
+
+/* scroling */
+
+ .items.active {
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+    transform: scale(1);
+  }
+

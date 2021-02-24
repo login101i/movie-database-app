@@ -5,7 +5,13 @@ import "./banner.css"
 
 function Banner() {
     const [movie, setMovie] = useState([]);
-    // console.log("To jest film z bannera -------", movie)
+    console.log("To jest film z bannera -------", movie)
+
+    // const MovieId=movie.id
+    const defaulPoster = "https://image.tmdb.org/t/p/original/7KL4yJ4JsbtS1BNRilUApLvMnc5.jpg"
+    const defaultOverview = "On a hiking trip to rekindle their marriage, a couple find themselves fleeing for their lives in the unforgiving wilderness from an unknown shooter"
+    const defaultName="Red dot"
+
 
     useEffect(() => {
 
@@ -36,22 +42,24 @@ function Banner() {
         <header className="banner"
             style={{
                 backgroundSize: "cover",
-                backgroundImage: `url(
-        "https://image.tmdb.org/t/p/original/${movie?.backdrop_path}"
-        )`,
-                backgroundPosition: "center top"
+                backgroundImage: !movie ?   ` url("https://image.tmdb.org/t/p/original/7KL4yJ4JsbtS1BNRilUApLvMnc5.jpg")` : 
+                    ` url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`
+                ,
+                backgroundPosition: "center top",
+                transition:"0.5s"
             }}
         >
             <div className="banner_contents">
-                <h1 className="banner_title">
-                    {movie?.name}
+                <h1 className="banner_title ml-3">
+                    {movie ? movie.title : defaultName}
                 </h1>
-
                 <div className="row">
-                    {/* <button className="banner_button">Trailer</button> */}
-                    <button className="banner_button">See description</button>
+                    <button
+                        className="banner_button "
+                    // onClick={history.push(./)}
+                    >See description</button>
                 </div>
-                <h4 className="banner_description">{truncate(movie?.overview, 200)}</h4>
+                <h4 className="banner_description ml-3">{truncate(movie?.overview, 200)}</h4>
             </div>
 
             <div className="banner--fade" />
