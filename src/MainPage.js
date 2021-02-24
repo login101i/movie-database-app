@@ -18,7 +18,7 @@ const MainPage = ({ history }) => {
     return (
         <Fragment>
             <Navbar history={history} />
-            <Banner />
+            <Banner history={history}/>
             <div>
                 {showRandom === "RandomMovies" && (
                     <>

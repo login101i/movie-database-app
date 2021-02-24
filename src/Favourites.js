@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import './favourites.css'
 
-const Favourites = () => {
+const Favourites = ({history}) => {
     const [show, setShow] = useState()
     const [favourites, setFavourites] = useState([])
     console.log(favourites)
@@ -13,12 +13,11 @@ const Favourites = () => {
             if (window.scrollY > 20) {
                 setShow(true)
             } else setShow(false);
-            console.log("przesuwam........")
         });
         // return () => {
         //     window.removeEventListener("scroll")
         // }
-    }, []);
+    }, [favourites]);
 
 
     console.log(favourites)
@@ -30,6 +29,10 @@ const Favourites = () => {
 
     const base_url = "https://image.tmdb.org/t/p/original"
 
+    const goToDetails = (id) => {
+        history.push(`/moviedetail/${id}`);
+        console.log("ID klikniętego filmu", id)
+    }
 
     return (
         <Fragment>
@@ -58,9 +61,10 @@ const Favourites = () => {
                                     <>
                                         <img
                                             src={`${base_url}${movie.movieInfo.poster_path}`}
-                                            id={movie.id}
+                                            id={movie.movieInfo.id}
                                             alt="Movie "
                                             className="row_poster"
+                                            onClick={() => goToDetails(movie.movieInfo.id)} 
                                         />
                                     </>
                                 )

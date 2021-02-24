@@ -4,6 +4,7 @@ import { MovieContext } from "./MovieContext";
 import { Link } from 'react-router-dom'
 import './filteredMovies.css'
 import StarsRating from 'stars-rating'
+import Loader from './Loader'
 
 
 
@@ -11,17 +12,15 @@ const Movies = () => {
 
     const {
         movies,
-        filteredMovies,
         loading,
-        search,
         setVoteAverage,
         date,
         setDate,
-        setGenre
+        
     } = useContext(MovieContext);
 
     const [filtred, setFiltr] = useState(movies)
-
+console.log(movies)
 
 
     const filterGenre = (genre) => {
@@ -118,7 +117,7 @@ const Movies = () => {
                             </div>
                         ))
                     ) : (
-                            <div>Loader</div>
+                            <Loader/>
                         )}
                 </div>
             </div>

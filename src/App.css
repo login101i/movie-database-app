@@ -8,6 +8,7 @@ font-family: 'Akaya Telivigala', cursive;
 .App{
   background-color: rgb(12, 12, 12);
   color:white;
+  overflow: hidden;
 }
 
 /* Loader animation */

@@ -29,14 +29,12 @@ const Row = ({ title, fetchUrl, history, large }) => {
 
     const goToDetails = (id) => {
         history.push(`/moviedetail/${id}`);
-        console.log("ID klikniętego filmu", id)
     }
 
     // scrolling on lick
     function loadElements() {
         const sliders = document.querySelectorAll('.items');
         var sliderArray = Array.prototype.slice.call(sliders)
-        console.log(sliderArray)
         let isDown = false;
         let startX;
         let scrollLeft;
@@ -63,6 +61,7 @@ const Row = ({ title, fetchUrl, history, large }) => {
                     const x = e.pageX - slider.offsetLeft;
                     const walk = (x - startX) * 1; // or scroll-fast *3 fex
                     slider.scrollLeft = scrollLeft - walk;
+                    console.log(walk)
                 });
             }
         })
@@ -72,8 +71,8 @@ const Row = ({ title, fetchUrl, history, large }) => {
 
     }
     // window.onload = function () {
-        loadElements()
-    
+    loadElements()
+
 
 
 
@@ -96,7 +95,16 @@ const Row = ({ title, fetchUrl, history, large }) => {
                                     className={`row_poster ${large && "row_posterLarge"}`}
                                     onDoubleClick={() => goToDetails(movie.id)} />
                             ))}
+
+
                         </div>
+                        <div className="arrows">
+                            <i className="fa fa-arrow-left"></i>
+                            <i className="fa fa-arrow-right"></i>
+                        </div>
+
+
+
                     </div>
                 </Fragment >
             }

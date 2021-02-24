@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# Get started with a project.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Info: 
+You can see this projet already deployed at the link
+ [moviedbapplication](https://moviedbapplication.netlify.app).
 
-## Available Scripts
+The source on github can be found at the link
+[moviedbapplication on github](https://github.com/login101i/movie-database-app).
 
-In the project directory, you can run:
+
+The project was created in React
+  [Create React App](https://github.com/facebook/create-react-app).
+
+## Available scripts needed to run the project.
+
+
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+After going to the main branch of the C: \ .... \ movie-database-app project and running the npm start script, we open the application in development mode.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Open [http: // localhost: 3000] (http: // localhost: 3000) to view it in a browser.
 
-### `npm test`
+If you edit something in the code, the browser will reload the code. \
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You can also see the resulting errors in the console.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Builds the production application in the "build" folder. \
+It correctly connects React in production mode and optimizes the build for the best performance. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+-----------------------------------------------
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Rozpoczynanie pracy z projektem.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Info: 
+Ten projet możesz zobaczyć już zdeployowany pod linkiem [moviedbapplication](https://moviedbapplication.netlify.app).
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Źródło na githubie znajduje się pod linkiem [moviedbapplication on github](https://github.com/login101i/movie-database-app).
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Projekt został stworzony w React   [Create React App](https://github.com/facebook/create-react-app).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Dostępne skrypty potrzebne do uruchomienia projektu.
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### `npm start`
 
-### Analyzing the Bundle Size
+Po przejściu do głównej gałęzi projektu C:\ .... \movie-database-app i po uruchomieniu skryptu npm start otwieramy aplikację w trybie development.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Otwórz [http://localhost:3000](http://localhost:3000) aby zobaczyć ją w przeglądarce.
 
-### Making a Progressive Web App
+Jeśli będziesz coś edytować w kodzie, przeglądarka załaduje ponownie kod.\
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Możesz w konsoli zobaczyć również powstałe błędy.
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### `npm run build`
 
-### Deployment
+Buduje aplikację do produkcji w folderze „build”. \
+Prawidłowo łączy React'a w trybie produkcyjnym i optymalizuje kompilację pod kątem najlepszej wydajności.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<!--  -->

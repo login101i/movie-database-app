@@ -6,6 +6,7 @@ import YouTube from 'react-youtube';
 import movieTrailer from 'movie-trailer';
 import StarsRating from 'stars-rating'
 import _ from "lodash";
+import Loader from './Loader'
 
 
 
@@ -166,11 +167,13 @@ const MovieDetails = ({ match, history }) => {
                 </div>
                 <div className="row d-flex justify-content-center my-5">
                     <div className="col-4 d-flex ">
-                        <img
+                        {movieInfo.poster_path ? <img
                             className="img-fluid float-right"
                             src={`https://image.tmdb.org/t/p/original/${movieInfo?.poster_path}`}
                             style={{ height: '500px' }}
-                            alt="" />
+                            alt="" /> :
+                            <Loader />
+                        }
                     </div>
                     <div className="col-4">
                         <div className="main-info mb-3">

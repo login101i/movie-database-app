@@ -1,6 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
-import axios from './axios';
-import requests from './requests';
+
 
 export const MovieContext = createContext();
 
@@ -13,11 +12,7 @@ export const MovieState = ({ children }) => {
     const [loading, setIsLoading] = useState(false)
 
     const [voteAverage, setVoteAverage] = useState(0)
-    console.log(voteAverage)
     const [date, setDate] = useState('2010-01-01')
-    const [genre, setGenre] = useState('')
-    console.log(genre)
-
     const [filteredMovies, setFilteredMovies] = useState([]);
 
 
@@ -43,17 +38,20 @@ export const MovieState = ({ children }) => {
 
     // let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&ratings[gte]=${rating}`
 
-    const getFilteredMovies = async () => {
-        const popularMoviesResponse = await fetch(
-            `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&release_date.gte=${date}&vote_average.gte=${voteAverage}`
-        );
-        const filteredMoviesData = await popularMoviesResponse.json();
-        setMovies(filteredMoviesData);
-    };
+   
 
     useEffect(() => {
+
+        const getFilteredMovies = async () => {
+            const popularMoviesResponse = await fetch(
+                `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&release_date.gte=${date}&vote_average.gte=${voteAverage}`
+            );
+            const filteredMoviesData = await popularMoviesResponse.json();
+            setMovies(filteredMoviesData);
+        };
+
         getFilteredMovies();
-    }, [voteAverage, date]);
+    }, [voteAverage, date, search ]);
 
 
     useEffect(() => {
@@ -80,7 +78,7 @@ export const MovieState = ({ children }) => {
                 voteAverage,
                 setDate,
                 date,
-                setGenre
+                
             }}
         >
             {children}
