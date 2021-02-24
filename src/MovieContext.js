@@ -10,16 +10,14 @@ export const MovieState = ({ children }) => {
     const [showRandom, setShowRandom] = useState("RandomMovies");
     const [search, setSearch] = useState("");
     const [loading, setIsLoading] = useState(false)
-
+    const [filteredBanner, setFilteredBanner] = useState('')
+    const [genre, setGenre]=useState('')
     const [voteAverage, setVoteAverage] = useState(0)
     const [date, setDate] = useState('2010-01-01')
-    const [filteredMovies, setFilteredMovies] = useState([]);
-
-
 
     const API_KEY = "1329705d96ffd5e3a197e84f0b8875e6"
 
-    // = ${ search }
+
     const handleSearch = async (e) => {
         e.preventDefault();
         if (search.trim() === "") {
@@ -32,26 +30,26 @@ export const MovieState = ({ children }) => {
         const searchData = await searchResponse.json();
         setMovies(searchData);
         setShowRandom("FilteredMovies")
-        console.log('hihiiihihih')
         setSearch("")
+
+        const filteredBanner = searchData.results
+        setFilteredBanner(filteredBanner)
+
+    
     };
-
-    // let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&ratings[gte]=${rating}`
-
-   
 
     useEffect(() => {
 
         const getFilteredMovies = async () => {
             const popularMoviesResponse = await fetch(
-                `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&release_date.gte=${date}&vote_average.gte=${voteAverage}`
+                `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&release_date.gte=${date}&vote_average.gte=${voteAverage}&with_genres=${genre}`
             );
             const filteredMoviesData = await popularMoviesResponse.json();
             setMovies(filteredMoviesData);
         };
 
         getFilteredMovies();
-    }, [voteAverage, date, search ]);
+    }, [voteAverage, date, genre]);
 
 
     useEffect(() => {
@@ -72,13 +70,14 @@ export const MovieState = ({ children }) => {
                 setMovies,
                 loading,
                 setIsLoading,
-
-                filteredMovies,
+              
                 setVoteAverage,
                 voteAverage,
                 setDate,
                 date,
-                
+                filteredBanner,
+                setGenre,
+                genre
             }}
         >
             {children}

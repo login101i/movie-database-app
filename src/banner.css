@@ -95,6 +95,13 @@
 display:none
 }
 
+.banner_button {
+
+  margin-right: 0rem;
+  font-weight: 700;
+ 
+}
+
 }
 @media only screen and (max-width: 900px) {
 

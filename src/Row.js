@@ -59,9 +59,12 @@ const Row = ({ title, fetchUrl, history, large }) => {
                     if (!isDown) return;
                     e.preventDefault();
                     const x = e.pageX - slider.offsetLeft;
-                    const walk = (x - startX) * 1; // or scroll-fast *3 fex
+                    const walk = (x - startX) * 1; // or scroll-fast 
+
+                    const arrow = document.querySelector('.fa-arrow-right')
+                    arrow.classList.add('hide')
                     slider.scrollLeft = scrollLeft - walk;
-                    console.log(walk)
+                   
                 });
             }
         })
@@ -99,8 +102,7 @@ const Row = ({ title, fetchUrl, history, large }) => {
 
                         </div>
                         <div className="arrows">
-                            <i className="fa fa-arrow-left"></i>
-                            <i className="fa fa-arrow-right"></i>
+                            <i className="fa fa-arrow-right "></i>
                         </div>
 
 

@@ -42,3 +42,11 @@
 .filter_input{
     max-width:300px;
 }
+
+@media only screen and (max-width: 900px) {
+.filtered_poster {
+  object-fit: contain;
+  max-width: 320px;
+}
+}
+

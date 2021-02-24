@@ -2,22 +2,9 @@ import React, { useState, useEffect, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import './favourites.css'
 
-const Favourites = ({history}) => {
-    const [show, setShow] = useState()
+const Favourites = ({ history }) => {
     const [favourites, setFavourites] = useState([])
     console.log(favourites)
-
-    useEffect(() => {
-
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 20) {
-                setShow(true)
-            } else setShow(false);
-        });
-        // return () => {
-        //     window.removeEventListener("scroll")
-        // }
-    }, [favourites]);
 
 
     console.log(favourites)
@@ -36,27 +23,25 @@ const Favourites = ({history}) => {
 
     return (
         <Fragment>
-            <div className={`nav ${show && "nav_black"}`}>
 
-                <Link to='/'>
-                    <img
-                        className="nav_logoLeft"
-                        src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
-                        alt=" Movie DataBase Logo"
-                    />
-                </Link>
-
-            </div >
-            <div className="myFavourites">
+            <div className="myFavourites d-flex flex-column align-items-center ">
                 {favourites.length === 0 ?
-                    <div className="row">You have no favourites movies yet. </div>
+                    <>
+                        <div className="row mt-5 h3">You have no favourites movies yet. </div>
+                        <div className=" mt-2 d-flex justify-content-center">
+                            <Link to="/">
+                                <button className="btn btn-info btn-md"
+                                >Return to HOME PAGE</button>
+                            </Link>
+                        </div>
+                    </>
                     :
                     (
                         <>
                             <div className="row d-flex justify-content-center ">
                                 <h2 className="mt-4"> My Favourites Movies </h2>
                             </div>
-                            <div className="row_posters d-flex mt-5 pt-3" >
+                            <div className="row_posters d-flex  mt-5 pt-3" >
                                 {favourites.map(movie => (
                                     <>
                                         <img
@@ -64,11 +49,23 @@ const Favourites = ({history}) => {
                                             id={movie.movieInfo.id}
                                             alt="Movie "
                                             className="row_poster"
-                                            onClick={() => goToDetails(movie.movieInfo.id)} 
+                                            onClick={() => goToDetails(movie.movieInfo.id)}
                                         />
                                     </>
                                 )
                                 )}
+                            </div>
+
+                            <div className="arrows">
+
+                                <i className="fa fa-arrow-right mt-2  ">   Scroll horizontally</i>
+                            </div>
+
+                            <div className=" mt-2 d-flex justify-content-center ">
+                                <Link to="/">
+                                    <button className="btn btn-info btn-md mt-3"
+                                    >Return to HOME PAGE</button>
+                                </Link>
                             </div>
 
                         </>

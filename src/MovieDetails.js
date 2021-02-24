@@ -15,16 +15,16 @@ const MovieDetails = ({ match, history }) => {
     const [trailerUrl, setTrailerUrl] = useState("");
     const [idFavourite, setIdFavourite] = useState(false)
     const [favourites, setFavourites] = useState([])
-    const [movieInBase, setMovieInBase] = useState(false)
+    const [isFafourite, setIsFafourite] = useState(false)
 
 
     // console.log("movie Info ---------", movieInfo)
-    // console.log(movieInfo.title)
+    console.log(favourites)
+    console.log(isFafourite)
 
     const base_url = "https://api.themoviedb.org/3/movie/"
     const id = match.params.id
-    const alreadyFavourite = favourites?.find(movie => movie.id === id)
-    if (alreadyFavourite) setMovieInBase(alreadyFavourite)
+
 
     const API_KEY = "1329705d96ffd5e3a197e84f0b8875e6"
 
@@ -65,11 +65,15 @@ const MovieDetails = ({ match, history }) => {
             favourites = JSON.parse(localStorage.getItem("FAVOURITES"));
             let unique = _.uniqWith(favourites, _.isEqual)
             setFavourites(unique)
-
-
-
-
         }
+        const alreadyFavourite = favourites.find(movie => movie.movieInfo.id === id)
+
+        // console.log("ooooooo", alreadyFavourite.movieInfo.id)
+        setTimeout(() => {
+            if (alreadyFavourite) setIsFafourite(alreadyFavourite.movieInfo.id)
+        }, 1000)
+
+
 
     }, [idFavourite, id])
 
@@ -81,7 +85,7 @@ const MovieDetails = ({ match, history }) => {
         }
     }
 
-    const handleClick = (movie) => {
+    const handleClick = async (movie) => {
         //stuff from net
         if (trailerUrl) {
             setTrailerUrl('')
@@ -106,7 +110,6 @@ const MovieDetails = ({ match, history }) => {
         favourites.push({
             movieInfo
         })
-        console.log(alreadyFavourite)
         // remove duplicates
         let unique = _.uniqWith(favourites, _.isEqual)
         localStorage.setItem("FAVOURITES", JSON.stringify(unique));
@@ -126,6 +129,7 @@ const MovieDetails = ({ match, history }) => {
         // remove duplicates
         localStorage.setItem("FAVOURITES", JSON.stringify(newFafourites));
         setIdFavourite(false)
+        setIsFafourite(false)
 
     }
 
@@ -141,7 +145,7 @@ const MovieDetails = ({ match, history }) => {
                 </Link>
 
             </div>
-            <div className="container-flex" >
+            <div className="container-fluid " >
                 <div className="imageOrTrailer">
                     {trailerUrl ? (
                         <YouTube videoId={trailerUrl} opts={opts} />
@@ -150,7 +154,7 @@ const MovieDetails = ({ match, history }) => {
                             backgroundSize: "cover",
                             backgroundImage: `url(
         "https://image.tmdb.org/t/p/original/${movieInfo?.backdrop_path}")`,
-                            height: '300px',
+                            height: '500px',
                             backgroundPosition: "center center"
                         }}>
                         {movieInfo.poster_path &&
@@ -163,28 +167,26 @@ const MovieDetails = ({ match, history }) => {
                     <div className="row"
 
                     ></div>
-
                 </div>
-                <div className="row d-flex justify-content-center my-5">
-                    <div className="col-4 d-flex ">
+                <div className="row-12 flex-sm-column d-md-flex flex-md-row justify-content-center  pt-4 my-5">
+                    <div className="col-sm-12 col-md-3 d-flex  float-right mb-4">
                         {movieInfo.poster_path ? <img
-                            className="img-fluid float-right"
                             src={`https://image.tmdb.org/t/p/original/${movieInfo?.poster_path}`}
-                            style={{ height: '500px' }}
+                            style={{ height: '480px' }}
                             alt="" /> :
                             <Loader />
                         }
                     </div>
-                    <div className="col-4">
+                    <div className=" col-sm-12 col-md-6 mt-3">
                         <div className="main-info mb-3">
 
 
                             <div className="d-flex float-right">
 
-                                {idFavourite && idFavourite === id ? <button className="btn btn-danger  btn-lg"
+                                {isFafourite && isFafourite === id ? <button className="btn btn-danger  btn-md"
                                     onClick={() => removeFromFavourites(id)}
                                 >Remove from favourites</button> :
-                                    <button className="btn btn-info  btn-lg"
+                                    <button className="btn btn-info  btn-md"
                                         onClick={() => addToFavourites(id)}
                                     >Add to my favourites</button>
                                 }
@@ -198,14 +200,14 @@ const MovieDetails = ({ match, history }) => {
                                 size={28}
                                 color={'#ffd700'} />
                             </div>
-                            <h3 className=""> {movieInfo.title}</h3>
-                            <div className=""> {movieInfo.overview}</div>
-                            <div>Czas trwania: {movieInfo.runtime} min</div>
+                            <h2 className=""> {movieInfo.title}</h2>
+                            <h5 className=""> {movieInfo.overview}</h5>
+                            <div>Duration: {movieInfo.runtime} min</div>
                         </div>
                         <div
                             className="d-flex justify-content-between my-3 "
                             style={{ maxWidth: "300px" }}>
-                            <div>Gatunek</div>
+                            <div>Genre:</div>
                             <div className="d-flex">
                                 {movieInfo.genres?.map((genre) => (
                                     <div
@@ -220,8 +222,8 @@ const MovieDetails = ({ match, history }) => {
                             style={{ maxWidth: "300px" }}
 
                         >
-                            <div>Production</div>
-                            {movieInfo.production_countries && <div>{movieInfo.production_countries[0].name}</div>}
+                            <div>Production country:</div>
+                            {movieInfo.production_countries?.lenght > 0 && <div>{movieInfo.production_countries[0].name}</div>}
                         </div>
                         <div className="d-flex justify-content-between my-3"
                             style={{ maxWidth: "300px" }}>
@@ -235,10 +237,10 @@ const MovieDetails = ({ match, history }) => {
 
                         </div>
 
-                        <div className="float-right mt-5">
+                        <div className="float-right mt-2">
 
                             <Link to="/">
-                                <button className="btn btn-info btn-lg"
+                                <button className="btn btn-info btn-md btn_return_media"
 
                                 >Return to HOME PAGE</button>
                             </Link>
