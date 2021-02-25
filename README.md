@@ -15,11 +15,11 @@ The project was created in React
 
 ### `npm install`
 
- First type in consol npm install for installing all the necessary packages all the necessary packages
+ After going to the main branch of the C: \ .... \ movie-database-app project first type in consol npm install for installing all the necessary packages.
 
 ### `npm start`
 
-After going to the main branch of the C: \ .... \ movie-database-app project and running the npm start script, we open the application in development mode.
+In C: \ .... \ movie-database-app type npm start. It will be opened in development mode.
 
 Open [http: // localhost: 3000] (http: // localhost: 3000) to view it in a browser.
 
@@ -51,11 +51,11 @@ Projekt został stworzony w React   [Create React App](https://github.com/facebo
 
 ### `npm install`
 
- Najpierw wpisz w kosoli npm install aby zainstalować wszystkie potrzebne paczki.
+ Po przejściu do głównej gałęzi projektu C:\ .... \movie-database-app   wpisz w kosoli npm install aby zainstalować wszystkie potrzebne paczki.
 
 ### `npm start`
 
-Po przejściu do głównej gałęzi projektu C:\ .... \movie-database-app i po uruchomieniu skryptu npm start otwieramy aplikację w trybie development.
+W głównej gałęzi projektu C:\ .... \movie-database-app  po uruchomieniu w konsolu skryptu npm start otwieramy aplikację w trybie development.
 
 Otwórz [http://localhost:3000](http://localhost:3000) aby zobaczyć ją w przeglądarce.
 
