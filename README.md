@@ -13,7 +13,9 @@ The project was created in React
 
 ## Available scripts needed to run the project.
 
+### `npm install`
 
+ First type in consol npm install for installing all the necessary packages all the necessary packages
 
 ### `npm start`
 
@@ -47,6 +49,9 @@ Projekt został stworzony w React   [Create React App](https://github.com/facebo
 
 ## Dostępne skrypty potrzebne do uruchomienia projektu.
 
+### `npm install`
+
+ Najpierw wpisz w kosoli npm install aby zainstalować wszystkie potrzebne paczki.
 
 ### `npm start`
 
