@@ -49,9 +49,10 @@ Projekt został stworzony w React   [Create React App](https://github.com/facebo
 
 ## Dostępne skrypty potrzebne do uruchomienia projektu.
 
+
 ### `npm install`
 
- Po przejściu do głównej gałęzi projektu C:\ .... \movie-database-app   wpisz w kosoli npm install aby zainstalować wszystkie potrzebne paczki.
+ Po przejściu do głównej gałęzi projektu C:\ ..... \movie-database-app   wpisz w kosoli npm install aby zainstalować wszystkie potrzebne paczki.
 
 ### `npm start`
 
